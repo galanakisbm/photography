@@ -106,9 +106,6 @@ function eim_init() {
     new EIM_REST_API();
     new EIM_Google_Drive_Sync();
     new EIM_Slack_Integration();
-    new EIM_Watermark_Styles();
-    new EIM_Image_Optimizer();
-    new Image_Manager();
     new EIM_Downloads_Admin();
     new EIM_Notifications_Admin();
     new EIM_Security_Admin();

@@ -65,7 +65,7 @@ class EIM_Download_Export {
         } );
 
         $event_title = sanitize_file_name( get_the_title( $post_id ) );
-        $safe_title  = str_replace( array( '"', "\r", "\n" ), '', $event_title );
+        $safe_title  = rawurlencode( str_replace( array( '"', "\r", "\n" ), '', $event_title ) );
         header( 'Content-Type: application/zip' );
         header( 'Content-Disposition: attachment; filename="' . $safe_title . '-all-photos.zip"' );
         header( 'Content-Length: ' . filesize( $zip_file ) );
