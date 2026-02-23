@@ -83,6 +83,11 @@ class Image_Manager {
             return false;
         }
 
+        // Optionally strip EXIF metadata from the original file.
+        if ( get_option( 'eim_strip_exif', 0 ) && class_exists( 'EIM_Image_Optimizer' ) ) {
+            EIM_Image_Optimizer::strip_exif_and_save( $original_path );
+        }
+
         $upload_dir = wp_upload_dir();
         $url        = str_replace(
             trailingslashit( $upload_dir['basedir'] ),
@@ -129,10 +134,19 @@ class Image_Manager {
     /**
      * Draw the watermark text onto the image resource.
      *
+     * Delegates to EIM_Watermark_Styles when available so that the active
+     * watermark style (text, diagonal, logo, etc.) is applied.  Falls back
+     * to the original simple text watermark if the class is not loaded.
+     *
      * @param  resource $image GD image resource.
      * @return resource        The same resource with the watermark applied.
      */
     private function apply_watermark( $image ) {
+        if ( class_exists( 'EIM_Watermark_Styles' ) ) {
+            return EIM_Watermark_Styles::apply( $image );
+        }
+
+        // ── Legacy fallback (original behaviour) ─────────────────────────────
         $img_w = imagesx( $image );
         $img_h = imagesy( $image );
 
