@@ -1,0 +1,256 @@
+/**
+ * Event Image Manager – Dark Theme
+ *
+ * Dark mode styles applied via the `.eim-dark-mode` body class.
+ * Also respects the OS `prefers-color-scheme: dark` media query as a fallback.
+ */
+
+/* ── CSS Variables ───────────────────────────────────────────────────────────── */
+:root {
+    --eim-dark-bg-primary:   #1a1a2e;
+    --eim-dark-bg-secondary: #16213e;
+    --eim-dark-bg-tertiary:  #0f3460;
+    --eim-dark-text-primary: #e0e0e0;
+    --eim-dark-text-muted:   #a0a0b0;
+    --eim-dark-border:       #2a2a4a;
+    --eim-dark-input-bg:     #1e1e3a;
+    --eim-dark-hover:        rgba(255, 255, 255, 0.05);
+    --eim-dark-overlay:      rgba(0, 0, 0, 0.75);
+    --eim-dark-accent:       #e94560;
+    --eim-dark-transition:   background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* ── Smooth transition for all themed elements ───────────────────────────────── */
+body,
+.eim-modal-content,
+.eim-gallery-item,
+.eim-download-options,
+input,
+textarea,
+select,
+button {
+    transition: var(--eim-dark-transition);
+}
+
+/* ── Body & page layout ──────────────────────────────────────────────────────── */
+.eim-dark-mode {
+    background-color: var(--eim-dark-bg-primary);
+    color: var(--eim-dark-text-primary);
+}
+
+.eim-dark-mode a {
+    color: #7eb8f7;
+}
+
+.eim-dark-mode a:hover {
+    color: #ffffff;
+}
+
+/* ── Modals ──────────────────────────────────────────────────────────────────── */
+.eim-dark-mode .eim-modal-overlay {
+    background: var(--eim-dark-overlay);
+}
+
+.eim-dark-mode .eim-modal-content {
+    background-color: var(--eim-dark-bg-secondary);
+    color: var(--eim-dark-text-primary);
+    border: 1px solid var(--eim-dark-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.eim-dark-mode .eim-modal-close {
+    color: var(--eim-dark-text-muted);
+}
+
+.eim-dark-mode .eim-modal-close:hover {
+    color: var(--eim-dark-text-primary);
+}
+
+/* ── Form inputs ─────────────────────────────────────────────────────────────── */
+.eim-dark-mode input[type="text"],
+.eim-dark-mode input[type="email"],
+.eim-dark-mode input[type="password"],
+.eim-dark-mode input[type="number"],
+.eim-dark-mode input[type="search"],
+.eim-dark-mode textarea,
+.eim-dark-mode select {
+    background-color: var(--eim-dark-input-bg);
+    color: var(--eim-dark-text-primary);
+    border-color: var(--eim-dark-border);
+}
+
+.eim-dark-mode input::placeholder,
+.eim-dark-mode textarea::placeholder {
+    color: var(--eim-dark-text-muted);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────────── */
+.eim-dark-mode .button,
+.eim-dark-mode .button-secondary {
+    background-color: var(--eim-dark-bg-tertiary);
+    color: var(--eim-dark-text-primary);
+    border-color: var(--eim-dark-border);
+}
+
+.eim-dark-mode .button:hover,
+.eim-dark-mode .button-secondary:hover {
+    background-color: var(--eim-dark-hover);
+    color: #ffffff;
+}
+
+.eim-dark-mode .button-primary {
+    background-color: var(--eim-dark-accent);
+    border-color: var(--eim-dark-accent);
+    color: #ffffff;
+}
+
+.eim-dark-mode .button-primary:hover {
+    background-color: #c73451;
+    border-color: #c73451;
+}
+
+/* ── Gallery grid ────────────────────────────────────────────────────────────── */
+.eim-dark-mode .eim-gallery-grid {
+    background-color: var(--eim-dark-bg-primary);
+}
+
+.eim-dark-mode .eim-gallery-item {
+    background-color: var(--eim-dark-bg-secondary);
+    border-color: var(--eim-dark-border);
+}
+
+.eim-dark-mode .eim-gallery-item:hover {
+    border-color: var(--eim-dark-accent);
+    box-shadow: 0 4px 16px rgba(233, 69, 96, 0.25);
+}
+
+.eim-dark-mode .eim-gallery-item-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+}
+
+/* ── Download options ────────────────────────────────────────────────────────── */
+.eim-dark-mode .eim-download-options,
+.eim-dark-mode .eim-adv-image-grid {
+    background-color: var(--eim-dark-bg-secondary);
+}
+
+.eim-dark-mode .eim-adv-image-item {
+    border-color: var(--eim-dark-border);
+    background-color: var(--eim-dark-bg-tertiary);
+}
+
+/* ── Progress bar ────────────────────────────────────────────────────────────── */
+.eim-dark-mode .eim-progress-bar {
+    background-color: var(--eim-dark-bg-tertiary);
+    border: 1px solid var(--eim-dark-border);
+}
+
+.eim-dark-mode .eim-progress-fill {
+    background-color: var(--eim-dark-accent);
+}
+
+/* ── Notification center ─────────────────────────────────────────────────────── */
+.eim-dark-mode .eim-notification-center,
+.eim-dark-mode .eim-notification-item {
+    background-color: var(--eim-dark-bg-secondary);
+    border-color: var(--eim-dark-border);
+    color: var(--eim-dark-text-primary);
+}
+
+.eim-dark-mode .eim-notification-item--unread {
+    background-color: var(--eim-dark-bg-tertiary);
+}
+
+.eim-dark-mode .eim-tab-btn {
+    background-color: var(--eim-dark-bg-secondary);
+    color: var(--eim-dark-text-muted);
+    border-color: var(--eim-dark-border);
+}
+
+.eim-dark-mode .eim-tab-btn--active {
+    background-color: var(--eim-dark-bg-tertiary);
+    color: var(--eim-dark-text-primary);
+}
+
+/* ── Messaging UI ────────────────────────────────────────────────────────────── */
+.eim-dark-mode .eim-conversation-list,
+.eim-dark-mode .eim-message-thread {
+    background-color: var(--eim-dark-bg-secondary);
+    border-color: var(--eim-dark-border);
+}
+
+.eim-dark-mode .eim-conversation-item {
+    border-bottom-color: var(--eim-dark-border);
+    color: var(--eim-dark-text-primary);
+}
+
+.eim-dark-mode .eim-conversation-item:hover,
+.eim-dark-mode .eim-conversation--active {
+    background-color: var(--eim-dark-bg-tertiary);
+}
+
+.eim-dark-mode .eim-message-bubble--mine {
+    background-color: var(--eim-dark-accent);
+    color: #ffffff;
+}
+
+.eim-dark-mode .eim-message-bubble--theirs {
+    background-color: var(--eim-dark-bg-tertiary);
+    color: var(--eim-dark-text-primary);
+}
+
+/* ── Tables ──────────────────────────────────────────────────────────────────── */
+.eim-dark-mode table,
+.eim-dark-mode th,
+.eim-dark-mode td {
+    border-color: var(--eim-dark-border);
+    color: var(--eim-dark-text-primary);
+}
+
+.eim-dark-mode th {
+    background-color: var(--eim-dark-bg-tertiary);
+}
+
+.eim-dark-mode tr:nth-child(even) {
+    background-color: var(--eim-dark-hover);
+}
+
+/* ── Dark mode toggle button ─────────────────────────────────────────────────── */
+.eim-dark-mode-toggle {
+    cursor: pointer;
+    background: none;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ── OS-level dark mode fallback ─────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    body:not(.eim-light-mode):not(.eim-dark-mode) {
+        background-color: var(--eim-dark-bg-primary);
+        color: var(--eim-dark-text-primary);
+    }
+
+    body:not(.eim-light-mode):not(.eim-dark-mode) .eim-modal-content {
+        background-color: var(--eim-dark-bg-secondary);
+        color: var(--eim-dark-text-primary);
+        border: 1px solid var(--eim-dark-border);
+    }
+
+    body:not(.eim-light-mode):not(.eim-dark-mode) .eim-gallery-item {
+        background-color: var(--eim-dark-bg-secondary);
+        border-color: var(--eim-dark-border);
+    }
+
+    body:not(.eim-light-mode):not(.eim-dark-mode) input,
+    body:not(.eim-light-mode):not(.eim-dark-mode) textarea,
+    body:not(.eim-light-mode):not(.eim-dark-mode) select {
+        background-color: var(--eim-dark-input-bg);
+        color: var(--eim-dark-text-primary);
+        border-color: var(--eim-dark-border);
+    }
+}
