@@ -22,32 +22,32 @@
             <span class="eim-tab-count" id="eim-count-all">0</span>
         </button>
         <button role="tab" aria-selected="false" aria-controls="eim-tab-unread"
-                id="eim-tabBtn-unread" class="eim-tab-btn" data-tab="unread">
+                id="eim-tabbtn-unread" class="eim-tab-btn" data-tab="unread">
             <?php esc_html_e( 'Unread', 'event-image-manager' ); ?>
             <span class="eim-tab-count" id="eim-count-unread">0</span>
         </button>
         <button role="tab" aria-selected="false" aria-controls="eim-tab-messages"
-                id="eim-tabBtn-messages" class="eim-tab-btn" data-tab="messages">
+                id="eim-tabbtn-messages" class="eim-tab-btn" data-tab="messages">
             <?php esc_html_e( 'Messages', 'event-image-manager' ); ?>
             <span class="eim-tab-count" id="eim-count-messages">0</span>
         </button>
     </nav>
 
     <!-- Tab panels -->
-    <div id="eim-tab-all" role="tabpanel" aria-labelledby="eim-tabBtn-all" class="eim-tab-panel eim-tab-panel--active">
+    <div id="eim-tab-all" role="tabpanel" aria-labelledby="eim-tabbtn-all" class="eim-tab-panel eim-tab-panel--active">
         <ul id="eim-notifications-all" class="eim-notification-list" aria-live="polite">
             <li class="eim-notification-loading"><?php esc_html_e( 'Loading notifications…', 'event-image-manager' ); ?></li>
         </ul>
     </div>
 
-    <div id="eim-tab-unread" role="tabpanel" aria-labelledby="eim-tabBtn-unread"
+    <div id="eim-tab-unread" role="tabpanel" aria-labelledby="eim-tabbtn-unread"
          class="eim-tab-panel" style="display:none;">
         <ul id="eim-notifications-unread" class="eim-notification-list" aria-live="polite">
             <li class="eim-notification-loading"><?php esc_html_e( 'Loading notifications…', 'event-image-manager' ); ?></li>
         </ul>
     </div>
 
-    <div id="eim-tab-messages" role="tabpanel" aria-labelledby="eim-tabBtn-messages"
+    <div id="eim-tab-messages" role="tabpanel" aria-labelledby="eim-tabbtn-messages"
          class="eim-tab-panel" style="display:none;">
         <ul id="eim-notifications-messages" class="eim-notification-list" aria-live="polite">
             <li class="eim-notification-loading"><?php esc_html_e( 'Loading notifications…', 'event-image-manager' ); ?></li>
