@@ -1,0 +1,416 @@
+/**
+ * Event Image Manager – Monetization UI
+ *
+ * Styles for pricing table, purchase modal, invoice, payment form,
+ * order summary, cart, badges, and commission dashboard.
+ */
+
+/* ════════════════════════════════════════════════════════════════════
+   Pricing Table
+   ════════════════════════════════════════════════════════════════════ */
+
+.eim-pricing-table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 32px 0;
+}
+
+@media (max-width: 1024px) {
+    .eim-pricing-table {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .eim-pricing-table {
+        grid-template-columns: 1fr;
+    }
+}
+
+.eim-pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.eim-pricing-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Featured / most popular plan */
+.eim-pricing-card--popular {
+    border-color: #0073aa;
+    box-shadow: 0 4px 20px rgba(0, 115, 170, 0.25);
+}
+
+.eim-pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0073aa;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 12px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+/* Current plan */
+.eim-pricing-card--current {
+    border-color: #46b450;
+}
+
+.eim-pricing-plan-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: #1a1a1a;
+}
+
+.eim-pricing-price {
+    font-size: 36px;
+    font-weight: 800;
+    color: #0073aa;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.eim-pricing-currency {
+    font-size: 20px;
+    vertical-align: super;
+}
+
+.eim-pricing-amount {
+    font-size: 36px;
+}
+
+.eim-pricing-period {
+    font-size: 14px;
+    color: #767676;
+    font-weight: 400;
+}
+
+.eim-pricing-features {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+    flex: 1;
+}
+
+.eim-pricing-feature {
+    font-size: 14px;
+    padding: 5px 0;
+    color: #444;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.eim-pricing-check {
+    color: #46b450;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.eim-pricing-action {
+    margin-top: auto;
+}
+
+.eim-pricing-btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.eim-pricing-btn--current {
+    border-color: #46b450;
+    color: #46b450;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Plan / type badges
+   ════════════════════════════════════════════════════════════════════ */
+
+.eim-plan-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.eim-plan-badge--free       { background: #f0f0f0; color: #555; }
+.eim-plan-badge--basic      { background: #e8f4fd; color: #0073aa; }
+.eim-plan-badge--pro        { background: #e8f0ff; color: #3c5afb; }
+.eim-plan-badge--enterprise { background: #fdf3e8; color: #c45e00; }
+
+/* ════════════════════════════════════════════════════════════════════
+   Purchase modal
+   ════════════════════════════════════════════════════════════════════ */
+
+.eim-modal-content--purchase {
+    max-width: 760px;
+    width: 90%;
+}
+
+.eim-purchase-layout {
+    display: flex;
+    gap: 32px;
+}
+
+@media (max-width: 640px) {
+    .eim-purchase-layout {
+        flex-direction: column;
+    }
+}
+
+.eim-purchase-preview {
+    flex: 0 0 240px;
+}
+
+.eim-purchase-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.eim-purchase-form-wrap {
+    flex: 1;
+}
+
+.eim-purchase-fieldset {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+}
+
+.eim-purchase-fieldset legend {
+    font-weight: 600;
+    padding: 0 6px;
+    font-size: 13px;
+    color: #555;
+}
+
+.eim-purchase-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.eim-purchase-option-label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.eim-purchase-option-label small {
+    font-size: 12px;
+    color: #767676;
+}
+
+.eim-purchase-option-price {
+    font-weight: 700;
+    color: #0073aa;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Payment form (Stripe card element)
+   ════════════════════════════════════════════════════════════════════ */
+
+.eim-payment-method-section {
+    margin-bottom: 16px;
+}
+
+.eim-stripe-card-element {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 12px;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+.eim-stripe-card-element--focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+}
+
+.eim-card-errors {
+    color: #c00;
+    font-size: 13px;
+    margin-top: 6px;
+    min-height: 18px;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Order summary / cart
+   ════════════════════════════════════════════════════════════════════ */
+
+.eim-order-summary {
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.eim-order-summary h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.eim-order-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.eim-order-table td {
+    padding: 4px 0;
+    color: #444;
+}
+
+.eim-order-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+}
+
+.eim-order-total td {
+    border-top: 2px solid #ddd;
+    padding-top: 8px;
+    font-size: 16px;
+    color: #111;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Invoice (@media print styles)
+   ════════════════════════════════════════════════════════════════════ */
+
+@media print {
+    .eim-invoice-no-print {
+        display: none !important;
+    }
+
+    body {
+        padding: 0;
+        font-size: 12px;
+    }
+
+    .eim-invoice-header {
+        page-break-inside: avoid;
+    }
+
+    .eim-invoice-items {
+        page-break-inside: auto;
+    }
+
+    .eim-invoice-items tr {
+        page-break-inside: avoid;
+    }
+
+    .eim-status-badge {
+        border: 1px solid #ccc;
+        background: transparent !important;
+        color: #333 !important;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Commission dashboard table
+   ════════════════════════════════════════════════════════════════════ */
+
+.eim-commission-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.eim-commission-table th,
+.eim-commission-table td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.eim-commission-table th {
+    background: #f5f5f5;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 0.4px;
+}
+
+.eim-commission-table tr:hover td {
+    background: #f9f9ff;
+}
+
+.eim-commission-table .eim-amount-col {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Status cells */
+.eim-commission-status {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.eim-commission-status--paid     { background: #e8f5e9; color: #2e7d32; }
+.eim-commission-status--pending  { background: #fff8e1; color: #f57f17; }
+.eim-commission-status--rejected { background: #fce4ec; color: #c62828; }
+
+/* ════════════════════════════════════════════════════════════════════
+   Progress bar (shared with download-export)
+   ════════════════════════════════════════════════════════════════════ */
+
+.eim-progress-wrap {
+    margin: 12px 0;
+}
+
+.eim-progress-bar {
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.eim-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0073aa, #00a0d2);
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+
+.eim-progress-label {
+    font-size: 12px;
+    color: #555;
+    margin-top: 4px;
+    text-align: right;
+}

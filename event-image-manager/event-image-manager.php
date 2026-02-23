@@ -30,6 +30,39 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-categories.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-admin-settings.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-admin-roles.php';
 
+// ── Phase 2 includes ──────────────────────────────────────────────────────────
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-download-export.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-download-queue.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-social-sharing.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-email-notifications.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-in-app-notifications.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-notification-preferences.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-notification-triggers.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-messaging-system.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-two-factor-auth.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-api-tokens.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-audit-logger.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-rate-limiter.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-ip-whitelist.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-product-system.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-payment-gateway.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-commission-tracker.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-print-on-demand.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-invoice-generator.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-webhooks.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-pricing-plans.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-print-manager.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-theme-manager.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-performance-optimizer.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-accessibility-helper.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-rest-api.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-google-drive-sync.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-slack-integration.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/admin/class-downloads-admin.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/admin/class-notifications-admin.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/admin/class-security-admin.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/admin/class-monetization-admin.php';
+
 // ── Bootstrap ─────────────────────────────────────────────────────────────────
 function eim_init() {
     new Event_Post_Type();
@@ -44,6 +77,42 @@ function eim_init() {
     new EIM_Categories();
     new EIM_Admin_Settings();
     new EIM_Admin_Roles();
+
+    // Phase 2 classes.
+    new EIM_Download_Export();
+    new EIM_Download_Queue();
+    new EIM_Social_Sharing();
+    new EIM_Email_Notifications();
+    new EIM_In_App_Notifications();
+    new EIM_Notification_Preferences();
+    new EIM_Notification_Triggers();
+    new EIM_Messaging_System();
+    new EIM_Two_Factor_Auth();
+    new EIM_API_Tokens();
+    new EIM_Audit_Logger();
+    new EIM_Rate_Limiter();
+    new EIM_IP_Whitelist();
+    new EIM_Product_System();
+    new EIM_Payment_Gateway();
+    new EIM_Commission_Tracker();
+    new EIM_Print_On_Demand();
+    new EIM_Invoice_Generator();
+    new EIM_Webhooks();
+    new EIM_Pricing_Plans();
+    new EIM_Print_Manager();
+    new EIM_Theme_Manager();
+    new EIM_Performance_Optimizer();
+    new EIM_Accessibility_Helper();
+    new EIM_REST_API();
+    new EIM_Google_Drive_Sync();
+    new EIM_Slack_Integration();
+    new EIM_Watermark_Styles();
+    new EIM_Image_Optimizer();
+    new Image_Manager();
+    new EIM_Downloads_Admin();
+    new EIM_Notifications_Admin();
+    new EIM_Security_Admin();
+    new EIM_Monetization_Admin();
 }
 add_action( 'plugins_loaded', 'eim_init' );
 
@@ -66,6 +135,20 @@ function eim_enqueue_frontend_assets() {
         'eim-advanced-gallery',
         plugin_dir_url( __FILE__ ) . 'assets/css/advanced-gallery.css',
         array( 'eim-gallery' ),
+        '1.0.0'
+    );
+
+    wp_enqueue_style(
+        'eim-dark-theme',
+        plugin_dir_url( __FILE__ ) . 'assets/css/dark-theme.css',
+        array(),
+        '1.0.0'
+    );
+
+    wp_enqueue_style(
+        'eim-monetization',
+        plugin_dir_url( __FILE__ ) . 'assets/css/monetization.css',
+        array(),
         '1.0.0'
     );
 
@@ -104,6 +187,22 @@ function eim_enqueue_frontend_assets() {
     wp_enqueue_script(
         'eim-comments',
         plugin_dir_url( __FILE__ ) . 'assets/js/comments.js',
+        array( 'jquery' ),
+        '1.0.0',
+        true
+    );
+
+    wp_enqueue_script(
+        'eim-dark-mode',
+        plugin_dir_url( __FILE__ ) . 'assets/js/dark-mode.js',
+        array(),
+        '1.0.0',
+        true
+    );
+
+    wp_enqueue_script(
+        'eim-download-export',
+        plugin_dir_url( __FILE__ ) . 'assets/js/download-export.js',
         array( 'jquery' ),
         '1.0.0',
         true
@@ -167,12 +266,69 @@ function eim_enqueue_frontend_assets() {
             ),
         )
     );
+
+    wp_localize_script(
+        'eim-download-export',
+        'eimExport',
+        array(
+            'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'eim_download_nonce' ),
+            'postId'  => $post_id,
+            'i18n'    => array(
+                'selecting' => __( '0 selected', 'event-image-manager' ),
+                'selected'  => __( '%d selected', 'event-image-manager' ),
+                'preparing' => __( 'Preparing export…', 'event-image-manager' ),
+                'queued'    => __( 'Added to download queue.', 'event-image-manager' ),
+                'error'     => __( 'An error occurred.', 'event-image-manager' ),
+            ),
+        )
+    );
 }
 add_action( 'wp_enqueue_scripts', 'eim_enqueue_frontend_assets' );
 
 // ── Admin assets ──────────────────────────────────────────────────────────────
 function eim_enqueue_admin_assets( $hook ) {
     global $post;
+
+    // Admin-wide assets (all admin pages).
+    wp_enqueue_style(
+        'eim-dark-theme',
+        plugin_dir_url( __FILE__ ) . 'assets/css/dark-theme.css',
+        array(),
+        '1.0.0'
+    );
+
+    wp_enqueue_style(
+        'eim-monetization',
+        plugin_dir_url( __FILE__ ) . 'assets/css/monetization.css',
+        array(),
+        '1.0.0'
+    );
+
+    wp_enqueue_script(
+        'eim-notifications',
+        plugin_dir_url( __FILE__ ) . 'assets/js/notifications.js',
+        array( 'jquery' ),
+        '1.0.0',
+        true
+    );
+
+    wp_localize_script(
+        'eim-notifications',
+        'eimNotifications',
+        array(
+            'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'eim_notifications_nonce' ),
+            'i18n'    => array(
+                'loading'         => __( 'Loading notifications…', 'event-image-manager' ),
+                'noNotifications' => __( 'No notifications.', 'event-image-manager' ),
+                'markRead'        => __( 'Mark Read', 'event-image-manager' ),
+                'error'           => __( 'An error occurred.', 'event-image-manager' ),
+            ),
+        )
+    );
+
+    // Assets only for event edit screens.
     if ( ( 'post.php' === $hook || 'post-new.php' === $hook )
         && isset( $post ) && 'event' === $post->post_type ) {
 
@@ -250,6 +406,21 @@ function eim_activate() {
     EIM_Search_Filter::create_table();
     EIM_Comments::create_table();
     EIM_Favorites::create_table();
+
+    // Phase 2 tables.
+    EIM_Download_Export::create_table();
+    EIM_Social_Sharing::create_table();
+    EIM_Email_Notifications::create_table();
+    EIM_In_App_Notifications::create_table();
+    EIM_Messaging_System::create_table();
+    EIM_Two_Factor_Auth::create_table();
+    EIM_API_Tokens::create_table();
+    EIM_Audit_Logger::create_table();
+    EIM_Product_System::create_table();
+    EIM_Payment_Gateway::create_table();
+    EIM_Commission_Tracker::create_table();
+    EIM_Invoice_Generator::create_table();
+    EIM_Webhooks::create_table();
 
     flush_rewrite_rules();
 }
